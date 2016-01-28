@@ -3,6 +3,6 @@ require('./ignorer')([
     '.scss',
     {
         ext: '.js',
-        test: /client/
+        tests: [/client/]
     }
 ])

@@ -2,17 +2,15 @@ import webpack from 'webpack';
 import path from 'path';
 import config from './config.js';
 
-const host = process.env.HOST || config.host;
-const port = (process.env.PORT + 1) || config.port;
-
 var webpackConfig = {
     entry: [
         './src/client'
     ],
     output: {
         filename: '[name].js',
-        path: './static/dist',
-        publicPath: `http://${host}:${port}/dist/`
+        // http://stackoverflow.com/questions/34371029/cannot-start-webpack-dev-server-with-gulp
+        path: path.resolve(__dirname, "./static/dist"),
+        publicPath: `http://${config.host}:${config.devPort}/dist/`
     },
     resolve: {
          extensions: ['', '.js', '.jsx', '.json']
@@ -27,5 +25,36 @@ var webpackConfig = {
 
     ]
 }
+
+if (process.env.NODE_ENV === 'production') {
+    webpackConfig.module.loaders.push({
+        test: /\.jsx?$/,
+        loaders: [
+            'babel'                 
+        ],
+        exclude: /node_modules/
+    })
+} else {
+    webpackConfig.entry = [
+        `webpack-dev-server/client?http://${config.host}:${config.devPort}`,
+        "webpack/hot/only-dev-server",
+    ].concat(webpackConfig.entry);
+    webpackConfig.module.loaders.push({
+        test: /\.jsx?$/,
+        loaders: [
+            'react-hot',
+            'babel'                 
+        ],
+        exclude: /node_modules/
+    });
+    webpackConfig.plugins.push(
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("development"),
+            }
+        })
+    );
+}   
 
 export default webpackConfig;
