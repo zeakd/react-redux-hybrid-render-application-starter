@@ -23,8 +23,10 @@
     "babel-polyfill": "^6.3.14",
     "babel-register": "^6.4.3",
     "browser-sync": "^2.11.1",
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
     "nodemon": "^1.8.1",
+    "run-sequence": "^1.1.5",
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   },
