@@ -1,4 +1,10 @@
 import gulp from 'gulp';
+import del from 'del';
+import run from 'run-sequence';
+
+gulp.task('clean', done => {
+    del(['./static/dist']);
+})
 
 gulp.task('nodemon', () => {
 
