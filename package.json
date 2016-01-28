@@ -1,0 +1,40 @@
+{
+  "name": "react-redux-universal-application-starter",
+  "version": "0.1.0",
+  "description": "es6 babel webpack react redux react-router express mongoose sass",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeakd/react-redux-universal-application-starter.git"
+  },
+  "author": "zeakd <stuzeakd@kaist.ac.kr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zeakd/react-redux-universal-application-starter/issues"
+  },
+  "homepage": "https://github.com/zeakd/react-redux-universal-application-starter#readme",
+  "keywords": "es6 babel webpack react redux react-router express mongoose sass",
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-polyfill": "^6.3.14",
+    "babel-register": "^6.4.3",
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.0",
+    "nodemon": "^1.8.1",
+    "webpack": "^1.12.12",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "history": "^1.17.0",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-router": "^1.0.3",
+    "redux": "^3.0.6",
+    "redux-simple-router": "^2.0.4"
+  }
+}
