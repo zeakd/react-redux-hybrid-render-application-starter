@@ -3,9 +3,12 @@ import path from 'path';
 import proxy from 'proxy-middleware';
 import url from 'url';
 import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router';
 
+import reducers from '../reducers';
 import routes from '../routes';
 
 var app = express();
@@ -50,9 +53,18 @@ app.use((req, res, next) => {
             // You can also check renderProps.components or renderProps.routes for
             // your "not found" component or route respectively, and send a 404 as
             // below, if you're using a catch-all route.      
-            const initialState = {};
+            const store = createStore(reducers);
+            const initialState = {
+                routing: {
+                    location: redirectLocation
+                }
+            };
             var rendered = renderToString(
-                <RouterContext {...renderProps} />
+                <Provider store={store}>
+                    <div>
+                        <RouterContext {...renderProps} />
+                    </div>
+                </Provider>
             )
             res.status(200).send(renderFullPage(rendered, initialState));
         } else {
