@@ -66,11 +66,13 @@ export default class Comp extends React.Component {
 }
 ```
 
+
 #### server-side build 
+이는 서버도 빌드하는 방식입니다. 
+webpack은 [alias](https://webpack.github.io/docs/configuration.html#resolve-alias)를 이용하여 불러올 모듈을 서버와 클라이언트마다 다르게 할 수 있다는 장점이 있습니다.
+그러나 서버빌드는 빌드가 불필요했던 것을 빌드해야한다는 점이 마음에 들지 않았습니다.
 
-
-그러나 일일히 브라우저 환경인지를 체크하여 모듈을 require로 가져오는 구조는 제게 조금 tricky해보였고 실험적으로 서버사이드에서 특정 extension과 파일이름을 가진 파일을 import할 경우 무시하는 모듈 ignore.js를 만들어 사용하여보았습니다. 이에대한 불편함이나 이슈가 발생하면 알려주시면 감사하겠습니다.
-
+첫번째 방식을 선택했었지만, 일일히 브라우저 환경인지를 체크하여 모듈을 require로 가져오는 구조는 제게 조금 tricky해보였고 실험적으로 서버사이드에서 특정 extension과 파일이름을 가진 파일을 import할 경우 무시하는 모듈 ignore.js를 만들어 사용하여보았습니다. 이에대한 불편함이나 이슈가 발생하면 알려주시면 감사하겠습니다.
 
 ### react 패턴
 
@@ -104,6 +106,13 @@ react cms인 [relax](https://github.com/relax/relax/blob/master/webpack.config.j
 #### [react-router](https://github.com/rackt/react-router)
 
 아직 unstable release인 2.0.0-rc5를 사용하고 있습니다. 2.0.0은 아직 이슈해결과 문서작업이 덜 끝났지만 api변동이 많으므로 이를 사용하길 권합니다.
+
+### universal application을 처음 접할 시 참고사항
+
+#### 서버와 클라이언트의 최초 진입하는 react 컴포넌트가 다릅니다.
+그 이유는 redux-devtools와 react-router의 렌더방식 때문입니다. devtools는 서버에서는 동작하지않는 브라우저전용 컴포넌트이며 클라이언트에만 넣었을 경우 checksum이 다르다며 react가 경고를 줍니다. 이를 해결하기위해 Root컴포넌트를 만들어서 클라이언트에서 mount된 이후 devtools를 렌더하게됩니다. 또한 react-router는 클라이언트 렌더시에는 <Router>를, 서버렌더시에는 <RouterContext>(2.0.0 버전부터 RoutingContext에서 RouterContext로 이름을 변경하였습니다.)를 사용하기 때문이기도 합니다. 
+
+또 다른 해결책으론 두번 렌더
 
 ## 기타
 KOA를 사용해보고 싶습니다.
