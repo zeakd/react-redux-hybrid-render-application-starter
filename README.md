@@ -73,6 +73,8 @@ export default class Comp extends React.Component {
 webpack은 [alias](https://webpack.github.io/docs/configuration.html#resolve-alias)를 이용하여 불러올 모듈을 서버와 클라이언트마다 다르게 할 수 있다는 장점이 있습니다.
 그러나 서버빌드는 빌드가 불필요했던 것을 빌드해야한다는 점이 마음에 들지 않았습니다.
 
+#### solution. ignore.
+
 첫번째 방식을 선택했었지만, 일일히 브라우저 환경인지를 체크하여 모듈을 require로 가져오는 구조는 제게 조금 tricky해보였고 실험적으로 서버사이드에서 특정 extension과 파일이름을 가진 파일을 import할 경우 무시하는 모듈 ignore.js를 만들어 사용하여보았습니다. 이에대한 불편함이나 이슈가 발생하면 알려주시면 감사하겠습니다.
 
 ### react 패턴
