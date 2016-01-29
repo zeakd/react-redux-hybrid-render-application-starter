@@ -77,7 +77,7 @@ webpack은 [alias](https://webpack.github.io/docs/configuration.html#resolve-ali
 ### react 패턴
 
 #### container component 패턴
-container는 react나 flux구조에 공식적으로 문서화되어있는 구조는 아니지만 react커뮤니티에서 널리 쓰이는 패턴입니다. react를 사용하다보면 컴포넌트에 많은 기능들이 포함되기 시작하여 같은 버튼임에도 다른 기능을 가져 react가 추구한 재사용이 생각보다 잘 되지 않는 것을 알 수있습니다. 이를 기능이 포함되지 않은 순수한 컴포넌트와 이 컴포넌트들을 사용하고 기능이 포함된 컴포넌트 컨테이너로 분류하여 컴포넌트 재사용성을 높이는 패턴입니다. [container components](https://medium.com/@learnreact/container-components-c0e67432e005)에 자세히 설명되어있습니다. 
+container는 react나 flux구조에 공식적으로 문서화되어있는 구조는 아니지만 react커뮤니티에서 널리 쓰이는 패턴입니다. react를 사용하다보면 컴포넌트에 많은 기능들이 포함되기 시작하여 같은 버튼임에도 다른 기능을 가져 react가 추구한 재사용이 생각보다 잘 되지 않는 것을 알 수있습니다. 이를 기능이 포함되지 않은 순수한 컴포넌트와 이 컴포넌트들을 사용하고 기능이 포함된 컴포넌트 컨테이너로 분류하여 컴포넌트 재사용성을 높이는 패턴입니다. [container components](https://medium.com/@learnreact/container-components-c0e67432e005)와 [Presentational and Container component](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)에 자세히 설명되어있습니다. 
 
 ### 기타 유의사항
 
@@ -107,12 +107,25 @@ react cms인 [relax](https://github.com/relax/relax/blob/master/webpack.config.j
 
 아직 unstable release인 2.0.0-rc5를 사용하고 있습니다. 2.0.0은 아직 이슈해결과 문서작업이 덜 끝났지만 api변동이 많으므로 이를 사용하길 권합니다.
 
+#### [react-router-redux](https://github.com/rackt/react-router-redux)
+
+react-router와 redux를 연결하는 두가지 대표모듈 redux-router와 react-router-redux중 오피셜한 react-router-redux를 사용하고 있습니다. 기존 react-simple-router에서 react-router-redux로 라이브러리 이름이 변경되었으니 참고하시기 바랍니다.
+
 ### universal application을 처음 접할 시 참고사항
 
 #### 서버와 클라이언트의 최초 진입하는 react 컴포넌트가 다릅니다.
 그 이유는 redux-devtools와 react-router의 렌더방식 때문입니다. devtools는 서버에서는 동작하지않는 브라우저전용 컴포넌트이며 클라이언트에만 넣었을 경우 checksum이 다르다며 react가 경고를 줍니다. 이를 해결하기위해 Root컴포넌트를 만들어서 클라이언트에서 mount된 이후 devtools를 렌더하게됩니다. 또한 react-router는 클라이언트 렌더시에는 <Router>를, 서버렌더시에는 <RouterContext>(2.0.0 버전부터 RoutingContext에서 RouterContext로 이름을 변경하였습니다.)를 사용하기 때문이기도 합니다. 
 
 또 다른 해결책으론 두번 렌더
+
+### 도움이 되는 자료
+
+[newedenfaces-react](http://sahatyalkabov.com/create-a-character-voting-app-using-react-nodejs-mongodb-and-socketio/)
+react로 간단히(?) application을 만드는 과정을 담고 있는 포스트입니다. 그저 react를 써보는 포스트가 아니라 eve online의 api를 활용해 react기초부터 express, mongodb, websocket까지 이어주는 튜토리얼이기 때문에 좀더 react를 사용한 어플리케이션이 어떤 구조를 갖게되는지 감을 잡기 매우 좋습니다. 중간중간 작성자의 철학도 와닿는 게 많네요. 조금 길지만 시간을 들여 읽으면 좋겠습니다.
+
+### Todo
+
+auth
 
 ## 기타
 KOA를 사용해보고 싶습니다.

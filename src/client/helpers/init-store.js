@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { syncHistory } from 'redux-simple-router';
+import { syncHistory } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import reducers from '../../reducers';
 import DevTools from '../containers/Devtools';
@@ -7,7 +7,7 @@ import DevTools from '../containers/Devtools';
 const reduxRouterMiddleware = syncHistory(browserHistory);
 
 var finalCreateStore;
-if (process.env.NODE_ENV === 'development') {
+if (__DEV__) {
     finalCreateStore = compose(
         applyMiddleware(reduxRouterMiddleware),
         DevTools.instrument()

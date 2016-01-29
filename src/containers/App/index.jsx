@@ -5,7 +5,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
-                <Header title="Arty Developer" />
+                <Header title="Title" />
                 <div>
                     {this.props.children}
                 </div>

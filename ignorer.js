@@ -18,7 +18,7 @@ module.exports = function (exts) {
                 var ignore = false;
                 for (var i = 0; i < ext.tests.length; i++) {
                     if(ext.tests[i].test(getRelativePath(filename))) {
-                        console.log(m, filename);
+                        // console.log(m, filename);
                         ignore = true;
                         break;
                     }

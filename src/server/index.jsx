@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import proxy from 'proxy-middleware';
+import bodyParser from 'body-parser';
 import url from 'url';
 import React from 'react';
 import { createStore } from 'redux';
@@ -10,20 +11,24 @@ import { match, RouterContext } from 'react-router';
 
 import reducers from '../reducers';
 import routes from '../routes';
+import { apiRouter } from './routers';
 
 var app = express();
 
 app.set("port", process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set("env", process.env.NODE_ENV || "development");
-if (app.get('env') === 'development') {
+if (__DEV__) {
     app.use('/dist', proxy(url.parse('http://localhost:3001/dist')));
 }
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // app.set('view engine', 'ejs');
 // app.set("host", process.env.HOST || "0.0.0.0");
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, '../static')));
+app.use('/api', apiRouter);
 
 function renderFullPage(renderedContent, initialState) {
   return `
@@ -56,9 +61,10 @@ app.use((req, res, next) => {
             const store = createStore(reducers);
             const initialState = {
                 routing: {
-                    location: redirectLocation
+                    location: renderProps.location
                 }
             };
+            
             var rendered = renderToString(
                 <Provider store={store}>
                     <div>

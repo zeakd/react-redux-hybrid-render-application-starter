@@ -5,6 +5,7 @@ import run from 'run-sequence';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import nodemon from 'nodemon';
+import browserSync from 'browser-sync';
 import path from 'path';
 
 import npmPackage from './package.json';
@@ -12,7 +13,6 @@ import config from './config';
 
 gulp.task('mode:production', done => {
     process.env.NODE_ENV = 'production';
-    console.log(process.env.NODE_ENV, "production!")
     done();
 })
 
@@ -42,6 +42,7 @@ gulp.task('nodemon', () => {
         },
         script: path.join(__dirname, npmPackage.main),
         watch: [
+            './app.js',
             'src/server/',
             'src/routes.jsx',
             'src/containers/',
@@ -73,14 +74,20 @@ gulp.task('webpack-dev-server', done => {
     })
 });
 
-gulp.task('browser-sync', () => {
-
-});
+gulp.task('browser-sync', function () {
+    browserSync.init({
+        proxy: `${config.host}:${config.port}`,
+        open: false,
+        port: 8080
+    });
+    // gulp.watch("app/scss/*.scss", ['sass']);
+    gulp.watch("/*.html").on('change', browserSync.reload);
+})
 
 gulp.task('serve', ['serve:dev']);
 
 gulp.task('serve:dev', done => {
-    run('mode:development', 'clean', ['nodemon', 'webpack-dev-server'], done);
+    run('mode:development', 'clean', ['nodemon', 'webpack-dev-server', 'browser-sync'], done);
 });
 
 gulp.task('serve:prod', done => {
