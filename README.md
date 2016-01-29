@@ -1,31 +1,32 @@
 # react-redux-universal-application-starter
 
-babel es6 gulp webpack
+## Dependency
+주요한 dependency입니다. 
+
+### build
+- [babel](http://babeljs.io/)
+- [gulp](http://gulpjs.com/)
+- [webpack](http://webpack.github.io/)
+    - [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)
+    - [react-hot-loader](https://github.com/gaearon/react-hot-loader)
+    - [redux-devtools](https://github.com/gaearon/redux-devtools)
+- [nodemon](http://nodemon.io)
+- [browser-sync](http://browsersync.io/)
+
+### app
+- [react](http://facebook.github.io/react/docs/tutorial.html)
+- [react-router](https://github.com/rackt/react-router)
+- [redux](https://github.com/rackt/redux)
+- [react-router-redux](https://github.com/rackt/react-router-redux)
+- [sass](http://sass-lang.com/)
+- [express](http://expressjs.com/)
+- [mongoose](http://mongoosejs.com/)
 
 ## 배경
 
 universal(isomorphic) javascript와 hybrid render에 큰관심을 가지고 있었고 react는 이를 구현하기 좋은 라이브러리입니다. react를 es5로 사용하는 것도 좋으나, 이들은 es6 모듈을 지원하기위해 계속 노력하고 있고 jsx 트랜스파일 역시 babel이 맡게되어 es6를 시작해보기 좋은 환경입니다. 
 
 기존 수많은 react와 flux구조를 위한 starter kit이 있지만 universal하지 않거나, production용으로 사용하지 말라고 권고한 babel-node로 서버를 사용하고, 테스크러너를 사용하지 않으며, 너무 기초적인 부분만 다루고 있어 css나 클라이언트 전용 컴포넌트들을 추가하면 동작하지 않는 것들이 많습니다. 본 프로젝트는 이들에 대한 해결책을 담고 있습니다.
-
-## Dependency
-
-주요한 dependency입니다. 
-
-- gulp
-- webpack
-    - webpack-dev-server
-- browser-sync
-- babel
-
-- express
-- mongoose
-
-- react
-- redux
-- react-router
-
-- scss
 
 ## 왜 webpack + gulp?
 
@@ -97,9 +98,9 @@ import ReactDOM from 'react-dom';
 다시 생각해보면 맞는 말입니다. 
 core-js참고.
 
-#### react-hot-loader
+#### [react-hot-loader](https://github.com/gaearon/react-hot-loader)
 
-[react-hot-loader](https://github.com/gaearon/react-hot-loader)는 deprecate될 예정이며 [react-transform-hmr](https://github.com/gaearon/react-transform-hmr)로 곧 대체됩니다. 아직 불안정하여 react-hot-loader를 사용하고 있지만 hmr을 고려해 볼 수 있습니다. 이 모듈의 개발자인 [Dan Abramov의 포스트](https://medium.com/@dan_abramov/the-death-of-react-hot-loader-765fa791d7c4)를 참고하세요.
+이 로더은 deprecate될 예정이며 [react-transform-hmr](https://github.com/gaearon/react-transform-hmr)로 곧 대체됩니다. 아직 불안정하여 react-hot-loader를 사용하고 있지만 hmr을 고려해 볼 수 있습니다. 이 모듈의 개발자인 [Dan Abramov의 포스트](https://medium.com/@dan_abramov/the-death-of-react-hot-loader-765fa791d7c4)를 참고하세요.
 
 react cms인 [relax](https://github.com/relax/relax/blob/master/webpack.config.js)는 이미 hmr을 사용하고있습니다. 
 
