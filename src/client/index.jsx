@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import { browserHistory } from 'react-router';
 import reducers from '../reducers';
 import routes from '../routes';
+
 import Root from './containers/Root';
 import initStore from './helpers/init-store';
 

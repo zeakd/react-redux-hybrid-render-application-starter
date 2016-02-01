@@ -1,7 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
+
 import Devtools from '../../client/containers/Devtools';
+
 
 export default class Root extends React.Component {
     constructor(props) {

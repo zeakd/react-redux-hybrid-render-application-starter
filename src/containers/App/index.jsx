@@ -1,4 +1,6 @@
 import React from 'react';
+
+import 'normalize.css';
 import Header from '../../components/Header';
 
 export default class App extends React.Component {

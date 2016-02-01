@@ -26,7 +26,13 @@ gulp.task('clean', done => {
     done();
 })
 
-gulp.task('build', (done) => {
+gulp.task('build', ['build:prod']);
+
+gulp.task('build:prod', done => {
+    run('mode:production', 'clean', 'webpack', done);
+})
+
+gulp.task('webpack', (done) => {
     var webpackConfig = require('./webpack.config').default;
     webpack(webpackConfig, (err, stats) => {
         if(err) throw new gutil.PluginError("webpack", err);
@@ -42,7 +48,7 @@ gulp.task('nodemon', () => {
         },
         script: path.join(__dirname, npmPackage.main),
         watch: [
-            './app.js',
+            './',
             'src/server/',
             'src/routes.jsx',
             'src/containers/',
@@ -80,8 +86,6 @@ gulp.task('browser-sync', function () {
         open: false,
         port: 8080
     });
-    // gulp.watch("app/scss/*.scss", ['sass']);
-    gulp.watch("/*.html").on('change', browserSync.reload);
 })
 
 gulp.task('serve', ['serve:dev']);

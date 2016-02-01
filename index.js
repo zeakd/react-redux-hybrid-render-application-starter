@@ -1,7 +1,7 @@
 var path = require('path');
 
 require('babel-register');
-require('./ignorer')([
+require('./lib/ignorer')([
     '.css',
     '.scss',
     {
