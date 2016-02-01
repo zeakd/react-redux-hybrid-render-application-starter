@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-universal-application-starter",
+  "name": "react-redux-hybrid-render-application-starter",
   "version": "0.1.0",
   "description": "es6 babel webpack react redux react-router express mongoose sass",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zeakd/react-redux-universal-application-starter.git"
+    "url": "git+https://github.com/zeakd/react-redux-hybrid-render-application-starter.git"
   },
   "author": "zeakd <stuzeakd@kaist.ac.kr>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zeakd/react-redux-universal-application-starter/issues"
+    "url": "https://github.com/zeakd/react-redux-hybrid-render-application-starter/issues"
   },
-  "homepage": "https://github.com/zeakd/react-redux-universal-application-starter#readme",
+  "homepage": "https://github.com/zeakd/react-redux-hybrid-render-application-starter#readme",
   "keywords": "es6 babel webpack react redux react-router express mongoose sass",
   "devDependencies": {
     "autoprefixer": "^6.3.1",

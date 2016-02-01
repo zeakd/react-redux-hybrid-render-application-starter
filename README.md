@@ -149,10 +149,7 @@ react로 간단히(?) application을 만드는 과정을 담고 있는 포스트
 
 ### Todo
 
-auth
-
-## 기타
-KOA를 사용해보고 싶습니다.
+- [ ] auth
 
 
 
